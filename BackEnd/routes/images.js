@@ -27,7 +27,7 @@ router.route("/addImage").post((req,res)=>{
 
 // http://localhost:8070/image/
 
-router.router("/"),get((req, res) => {
+router.route("/images").get((req, res) => {
     Image.find().then((images)=>{
         res.json(images)
     }).catch((err)=>{
@@ -71,9 +71,9 @@ router.route("/delete/:id").delete(async(req,res)=>{
     })
 })
 
-router.route("/get/:id").get(async(req)=>{
+/*router.route("/get/:id").get(async(req)=>{
     let userId=req.params.id;
     const user
-})
+})*/
 
 module.exports = router;

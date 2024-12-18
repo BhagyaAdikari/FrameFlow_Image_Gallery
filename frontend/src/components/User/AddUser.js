@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
 import axios from "axios";
+import {
+  MDBInput,
+  MDBCol,
+  MDBRow,
+  MDBCheckbox,
+  MDBBtn
+} from 'mdb-react-ui-kit';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+
 
 function AddUser() {
 
@@ -19,7 +28,7 @@ function AddUser() {
             password
         }
 
-        axios.post("./http://localhost:8070/user/addUser",newUser).then(()=>{
+        axios.post("http://localhost:8070/user/addUser",newUser).then(()=>{
             alert("New User is added")
         }).catch((err)=>{
             alert(err);
@@ -30,38 +39,42 @@ function AddUser() {
     }
 
   return (
-   <form className="container" onSubmit={sendData}>
-      <div className="form-group">
-        <label htmlFor="name">Name</label>
-        <input type="text" className="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name" onChange={(e)=>{
-          setName(e.target.value);
-        }}/>
-      </div>
+  <div className='container p-5'>
+   <form className="container p-5" onSubmit={sendData}>
+     
+<MDBInput className='mb-4' type='name' id='form1Example1' label='Enter Name' 
 
-      <div className="form-group">
-        <label htmlFor="age">Age</label>
-        <input type="text" className="form-control" id="age" placeholder="Age" onChange={(e)=>{
-          setAge(e.target.value);
-        }}/>
-      </div>
+onChange={(e)=>{
+  setName(e.target.value);
+}}/>
 
-      <div className="form-group">
-        <label htmlFor="gender">Gender</label>
-        <input type="text" className="form-control" id="gender" placeholder="Gender" onChange={(e)=>{
-          setGender(e.target.value);
-        }}/>
-      </div>
+<MDBInput className='mb-4' type='age' id='form1Example2' label='Enter Age' 
+onChange={(e)=>{
+  setAge(e.target.value);
+}}/>
+<MDBInput className='mb-4' type='gender' id='form1Example1' label='Enter gender' 
 
-      <div className="form-group">
-        <label htmlFor="password">Password</label>
-        <input type="text" className="form-control" id="password" placeholder="Password" onChange={(e)=>{
-          setPassword(e.target.value);
-        }}/>
-      </div>
+onChange={(e)=>{
+  setGender(e.target.value);
+}}
+/>
+<MDBInput className='mb-4' type='password' id='form1Example2' label='Enter password' onChange={(e)=>{
+          setPassword(e.target.value);}}/>
 
-      <button type="submit" className="btn btn-primary">Submit</button>
-    </form>
+<MDBRow className='mb-4'>
+  <MDBCol className='d-flex justify-content-center'>
+    <MDBCheckbox id='form1Example3' label='Remember me' defaultChecked />
+  </MDBCol>
+  <MDBCol>
+    <a href='#!'>Forgot password?</a>
+  </MDBCol>
+</MDBRow>
 
+<MDBBtn type='submit' block>
+  Sign up
+</MDBBtn>
+</form>
+</div>
   )
 }
 
