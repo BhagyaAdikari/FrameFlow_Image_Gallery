@@ -1,5 +1,10 @@
-const router = require("express").Router();
-let Image=require("../models/Image");
+const express = require("express");
+const router = express.Router();
+let Image = require("../models/Image");
+const fileUpload = require('express-fileupload');
+
+const app = express();
+app.use(fileUpload());
 
 // http://localhost:8070/image/addImage
 
@@ -23,6 +28,25 @@ router.route("/addImage").post((req,res)=>{
         console.log(err);
     })
 
+})
+
+//http://localhost:8070/image/upload
+
+router.route("/upload").post((req,res)=>{
+    if(req.files===null){
+        return res.status(400).json({msg:"No file uploaded"});
+    }
+
+    const file=req.files.file;
+
+    file.mv(`${__dirname}/../../frontend/public/uploads/${file.name}`,err=>{
+        if(err){
+            console.error(err);
+            return res.status(500).send(err);
+        }
+
+        res.json({fileName:file.name,filePath:`/uploads/${file.name}`});
+    });
 })
 
 // http://localhost:8070/image/

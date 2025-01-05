@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import "./../Css/ImageUpload.css"; // Assuming the CSS file is in the same directory
 
 function ImageUpload() {
   const [files, setFiles] = useState([]);
+  const [memoryName, setMemoryName] = useState("");
+  const [date, setDate] = useState("");
 
   // Handle file selection
   const handleFileChange = (event) => {
+    console.log(event.target.files);
     const selectedFiles = Array.from(event.target.files);
     setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
   };
@@ -34,10 +38,51 @@ function ImageUpload() {
       </div>
     ));
   };
+  
+  const submitFiles = () => {
+
+    const formData = new FormData();
+    files.forEach((file)=>{
+      formData.append("files",file);
+    });
+  
+    formData.append("memoryName", memoryName);
+    formData.append("date", date);
+
+    fetch("http://localhost:8070/image/upload", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log("Success:", result);
+        alert("Files uploaded successfully");
+        setFiles([]);
+        setMemoryName("");
+        setDate("");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Error occurred");
+      });
+
+
+
+  }
 
   return (
     <div className="file-upload">
       <h2>Upload Files</h2>
+      <div className="input-group">
+        <input
+          type="text"
+          value={memoryName}
+          onChange={(e) => setMemoryName(e.target.value)}
+          placeholder="Memory Name"
+          className="memory-name-input"
+        />
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+      </div>
       <div
         className="upload-area"
         onDragOver={handleDragOver}
@@ -56,6 +101,9 @@ function ImageUpload() {
         </label>
       </div>
       <div className="file-list">{renderFileList()}</div>
+
+      <button onClick={submitFiles}>Submit</button>
+
     </div>
   );
 }

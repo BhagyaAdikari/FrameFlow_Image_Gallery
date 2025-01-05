@@ -95,4 +95,27 @@ router.route("/get/:userId").get((req, res) => {
     });
 });
 
+//Login User
+
+router.route("/login").post(async (req, res) => {
+  const {username, password} = req.body;
+
+  try {
+    const user = await User.findOne({name: username});
+    if (user) {
+      if (user.password === password) {
+        res.json({message: "Success", userId: user._id});
+      } else {
+        res.json({message:"The password is wrong"});
+      }
+    } else {
+      res.json({message:"No record existed"});
+    }
+  } catch (err) {
+    console.error("Error during login:", err);
+    res.status(500).json("Internal Server Error");
+  }
+});
+
+
 module.exports = router;

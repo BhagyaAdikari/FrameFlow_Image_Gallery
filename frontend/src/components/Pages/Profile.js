@@ -18,6 +18,10 @@ import {
   } from 'mdb-react-ui-kit';
 
 function Profile() {
+
+  const Image = () => {
+    window.location.href = "/ImageUpload";
+  }
   return (
     <section style={{ backgroundColor: '#eee' }}>
       <MDBContainer className="py-5">
@@ -48,7 +52,7 @@ function Profile() {
                 <p className="text-muted mb-1">Full Stack Developer</p>
                 <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <MDBBtn>Follow</MDBBtn>
+                  <MDBBtn onClick={Image}>Create Memory</MDBBtn>
                   <MDBBtn outline className="ms-1">Message</MDBBtn>
                 </div>
               </MDBCardBody>
