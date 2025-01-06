@@ -28,7 +28,7 @@ function App() {
         <Route path="/updateUser/:id" exact element={<UpdateUser/>}></Route>
         <Route path="/userProfile" exact element={<Profile/>}></Route>
         <Route path="/PublicProfile" exact element={<PublicProfile/>}></Route>
-        <Route path="/ImageUpload" exact element={<ImageUpload/>}></Route>
+        <Route path="/ImageUpload/:id" exact element={<ImageUpload/>}></Route>
         <Route path="/Profile1/:id" exact element={<Profile1/>}></Route>
       </Routes>      
     </Router>
