@@ -32,7 +32,7 @@ function Profile1() {
     
     <Link to={`/updateUser/${id}`}><button type="button" className="btn btn-primary">Update User</button></Link>
     <Link to={`/deleteUser/${id}`}><button type="button" className="btn btn-danger">Delete User</button></Link><br></br>
-    <Link to="/User"><button type="button" className="btn btn-secondary">Create Memory</button></Link>
+    <Link to={`/ImageUpload/${id}`}><button type="button" className="btn btn-secondary">Create Memory</button></Link>
 </div></div>
   )
 }

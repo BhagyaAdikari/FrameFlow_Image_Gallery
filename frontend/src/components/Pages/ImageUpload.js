@@ -1,7 +1,28 @@
 import React, { useState } from "react";
-import "./../Css/ImageUpload.css"; // Assuming the CSS file is in the same directory
+import { useEffect } from "react";
+import { useParams} from "react-router-dom";
+import axios from "axios";
+import "./../Css/ImageUpload.css";
 
 function ImageUpload() {
+
+  const { id } = useParams();
+
+  const [user,setUser]=useState([]);
+  
+  //Fetching user
+
+  useEffect(()=>{
+    function getUser(){
+      axios.get(`http://localhost:8070/user/get/${id}`).then((res)=>{
+        setUser(res.data);
+      }).catch((err)=>{
+        alert(err);
+      })
+    }
+    getUser();
+  },[])
+
   const [files, setFiles] = useState([]);
   const [memoryName, setMemoryName] = useState("");
   const [date, setDate] = useState("");
@@ -72,7 +93,7 @@ function ImageUpload() {
 
   return (
     <div className="file-upload">
-      <h2>Upload Files</h2>
+      <h2>Hello {user.name} <br></br>Upload Files</h2>
       <div className="input-group">
         <input
           type="text"
