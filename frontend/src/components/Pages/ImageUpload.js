@@ -1,35 +1,32 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useParams} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./../Css/ImageUpload.css";
 
 function ImageUpload() {
-
   const { id } = useParams();
-
-  const [user,setUser]=useState([]);
-  
-  //Fetching user
-
-  useEffect(()=>{
-    function getUser(){
-      axios.get(`http://localhost:8070/user/get/${id}`).then((res)=>{
-        setUser(res.data);
-      }).catch((err)=>{
-        alert(err);
-      })
-    }
-    getUser();
-  },[])
-
+  const [user, setUser] = useState([]);
   const [files, setFiles] = useState([]);
   const [memoryName, setMemoryName] = useState("");
   const [date, setDate] = useState("");
 
+  // Fetch user data
+  useEffect(() => {
+    function getUser() {
+      axios
+        .get(`http://localhost:8070/user/get/${id}`)
+        .then((res) => {
+          setUser(res.data);
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }
+    getUser();
+  }, [id]);
+
   // Handle file selection
   const handleFileChange = (event) => {
-    console.log(event.target.files);
     const selectedFiles = Array.from(event.target.files);
     setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
   };
@@ -59,16 +56,22 @@ function ImageUpload() {
       </div>
     ));
   };
-  
-  const submitFiles = () => {
 
+  // Submit files to the server
+  const submitFiles = () => {
     const formData = new FormData();
-    files.forEach((file)=>{
-      formData.append("files",file);
+    files.forEach((file) => {
+      formData.append("files", file);
     });
-  
-    formData.append("memoryName", memoryName);
+
+    formData.append("category", memoryName);
     formData.append("date", date);
+    formData.append("userId", id); // Corrected to use 'id' directly
+
+    // Log the FormData content
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
 
     fetch("http://localhost:8070/image/upload", {
       method: "POST",
@@ -86,14 +89,11 @@ function ImageUpload() {
         console.error("Error:", error);
         alert("Error occurred");
       });
-
-
-
-  }
+  };
 
   return (
     <div className="file-upload">
-      <h2>Hello {user.name} <br></br>Upload Files</h2>
+      <h2>Hello {user.name} <br />Upload Files</h2>
       <div className="input-group">
         <input
           type="text"
@@ -102,7 +102,11 @@ function ImageUpload() {
           placeholder="Memory Name"
           className="memory-name-input"
         />
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
       </div>
       <div
         className="upload-area"
@@ -122,9 +126,7 @@ function ImageUpload() {
         </label>
       </div>
       <div className="file-list">{renderFileList()}</div>
-
       <button onClick={submitFiles}>Submit</button>
-
     </div>
   );
 }

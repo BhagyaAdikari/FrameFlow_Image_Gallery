@@ -1,103 +1,45 @@
-const express = require("express");
-const router = express.Router();
-let Image = require("../models/Image");
-const fileUpload = require('express-fileupload');
+const router = require('express').Router();
+let image = require('../models/Image');
+const multer = require('multer');
 
-const app = express();
-app.use(fileUpload());
-
-// http://localhost:8070/image/addImage
-
-router.route("/addImage").post((req,res)=>{
-
-    const fileName=req.body.fileName;
-    const category=req.body.category;
-    const date=Date(req.body.date);
-    const userId=req.body.userId;
-
-    const newImage=new Image({
-        fileName,
-        category,
-        date,
-        userId
-    })
-
-    newImage.save().then(()=>{
-        res.json("Image Added")
-    }).catch((err)=>{
-        console.log(err);
-    })
-
-})
-
-//http://localhost:8070/image/upload
-
-router.route("/upload").post((req,res)=>{
-    if(req.files===null){
-        return res.status(400).json({msg:"No file uploaded"});
+// Configure multer storage and file handling
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/'); // Set upload folder
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + file.originalname); // Set unique filename
     }
-
-    const file=req.files.file;
-
-    file.mv(`${__dirname}/../../frontend/public/uploads/${file.name}`,err=>{
-        if(err){
-            console.error(err);
-            return res.status(500).send(err);
-        }
-
-        res.json({fileName:file.name,filePath:`/uploads/${file.name}`});
-    });
-})
-
-// http://localhost:8070/image/
-
-router.route("/images").get((req, res) => {
-    Image.find().then((images)=>{
-        res.json(images)
-    }).catch((err)=>{
-        console.log(err)
-    })
 });
 
-//// http://localhost:8070/image/update/:id
+const upload = multer({ storage: storage });
 
-router.route("/update/:id").put(async(req,res)=>{
-    let userId=req.params.id;
+// Create a new memory route, with file upload handling
+router.route('/upload').post(upload.array('files', 10), (req, res) => {
+    const category = req.body.category;
+    const date = req.body.date;
+    const fileName = req.files;
+    const userId = req.body.userId;
 
-    const {name,age,gender}=req.body;
-
-    const updateStudent={
-
-        name,age,gender
-
+    if (!category || !date || !fileName || !userId) {
+        return res.status(400).json({ message: 'Memory name, date, and files are required' });
     }
 
-    const update=await Image.findByIdAndUpdate(userId, updateStudent)
-    .then(()=>{
-        res.status(200).send({status:"User updated",user:update     })
-     }).catch((err)=>{
-        console.log(err);
-        res.status(500).send({status: "Error with updating data",error:err.message});
-     })
-})
+    const newMemory = new image({
+        category,
+        date,
+        fileName,
+        userId
+    });
 
-router.route("/delete/:id").delete(async(req,res)=>{
-    let userId=req.params.id;
-
-    await Image.findByIdAndDelete(userId)
-    .then(()=>{
-        res.status(200).send({status: "User deleted sucessfully"})
-    }).catch((err)=>{
-        console.log(err.message);
-        res.status(500).send({
-            status: "Error with delete user ",error:err.message
+    newMemory.save()
+        .then(() => {
+            res.json("Memory added successfully");
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).json({ message: 'Error saving memory', error: err });
         });
-    })
-})
-
-/*router.route("/get/:id").get(async(req)=>{
-    let userId=req.params.id;
-    const user
-})*/
+});
 
 module.exports = router;
