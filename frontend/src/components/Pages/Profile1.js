@@ -30,9 +30,18 @@ function Profile1() {
     <p><span className="label">Gender:</span> {user.gender}</p>
     <p><span className="label">Password:</span> {user.password}</p>
     
-    <Link to={`/updateUser/${id}`}><button type="button" className="btn btn-primary">Update User</button></Link>
+    <div className='container p-3 my-3 bg-dark text-white'>
+    <Link to={`/updateUser/${id}`}><button type="button" className="btn btn-primary">Update User</button></Link><br></br>
+    </div>
+    <div className='container p-3 my-3 bg-dark text-white'>
     <Link to={`/deleteUser/${id}`}><button type="button" className="btn btn-danger">Delete User</button></Link><br></br>
+    </div>
+    <div className='container p-3 my-3 bg-dark text-white'>
+    <Link to={`/PublicProfile`}><button type="button" className="btn btn-secondary">View my Memories</button></Link>
+    </div>
+    <div className='container p-3 my-3 bg-dark text-white'>
     <Link to={`/ImageUpload/${id}`}><button type="button" className="btn btn-secondary">Create Memory</button></Link>
+    </div>
 </div></div>
   )
 }

@@ -68,6 +68,18 @@ function ImageUpload() {
     formData.append("date", date);
     formData.append("userId", id); // Corrected to use 'id' directly
 
+    if (!memoryName.trim()) {
+      alert("Please provide a memory name.");
+      return;
+    }
+    if (!date) {
+      alert("Please select a date.");
+      return;
+    }
+    if (files.length === 0) {
+      alert("Please select at least one file.");
+      return;
+    }
     // Log the FormData content
     for (let [key, value] of formData.entries()) {
       console.log(`${key}: ${value}`);
@@ -84,6 +96,7 @@ function ImageUpload() {
         setFiles([]);
         setMemoryName("");
         setDate("");
+        window.location.href = `/Profile1/${id}`;
       })
       .catch((error) => {
         console.error("Error:", error);
