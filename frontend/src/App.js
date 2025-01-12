@@ -11,6 +11,8 @@ import PublicProfile from './components/Pages/PublicProfile';
 import ImageUpload from './components/Pages/ImageUpload';
 import Home from './components/Pages/Home';
 import Profile1 from './components/Pages/Profile1';
+import PProfile from './components/Pages/PProfile';
+import Memory from './components/Images/Memory';
 function App() {
   return (
     
@@ -30,6 +32,8 @@ function App() {
         <Route path="/PublicProfile" exact element={<PublicProfile/>}></Route>
         <Route path="/ImageUpload/:id" exact element={<ImageUpload/>}></Route>
         <Route path="/Profile1/:id" exact element={<Profile1/>}></Route>
+        <Route path="/PProfile/:id" exact element={<PProfile/>}></Route>
+        <Route path="/Memory/:id" exact element={<Memory/>}></Route>
       </Routes>      
     </Router>
     

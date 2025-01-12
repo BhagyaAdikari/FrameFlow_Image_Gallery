@@ -39,4 +39,39 @@ router.post("/upload", upload.array("files"), async (req, res) => {
   }
 });
 
+// Route to get all images from user id
+
+router.get("/get/:id", async (req, res) => {
+  try {
+    const id = req.params.id; // Get user ID from route params
+    const images = await Image.find({ userId: id }); // Fetch images based on userId
+
+    // Transform the data if needed
+    const newImages = images.map((image) => {
+      return {
+        id: image._id,
+        userId: image.userId,
+        memory: image.category,
+        files: image.files, // Array of filenames
+      };
+    });
+
+    // Send the transformed data as a response
+    res.status(200).json(newImages);
+  } catch (error) {
+    console.error("Error getting images:", error);
+    res.status(500).json({ message: "Error occurred", error });
+  }
+});
+
+
+// Route to get image by memory id
+
+router.get("/getMemory/:id", async (req,res)=>{
+  try{
+    const id = req.params.id;
+    const image = await Image.findById(id);
+  }
+})
+
 module.exports = router;

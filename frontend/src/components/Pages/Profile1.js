@@ -37,7 +37,7 @@ function Profile1() {
     <Link to={`/deleteUser/${id}`}><button type="button" className="btn btn-danger">Delete User</button></Link><br></br>
     </div>
     <div className='container p-3 my-3 bg-dark text-white'>
-    <Link to={`/PublicProfile`}><button type="button" className="btn btn-secondary">View my Memories</button></Link>
+    <Link to={`/PProfile/${id}`}><button type="button" className="btn btn-secondary">View my Memories</button></Link>
     </div>
     <div className='container p-3 my-3 bg-dark text-white'>
     <Link to={`/ImageUpload/${id}`}><button type="button" className="btn btn-secondary">Create Memory</button></Link>
