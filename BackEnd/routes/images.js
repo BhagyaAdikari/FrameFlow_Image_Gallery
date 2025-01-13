@@ -65,13 +65,31 @@ router.get("/get/:id", async (req, res) => {
 });
 
 
-// Route to get image by memory id
-
-router.get("/getMemory/:id", async (req,res)=>{
-  try{
+router.get("/getMemory/:id", async (req, res) => {
+  try {
     const id = req.params.id;
+
+    // Find the document by ID
     const image = await Image.findById(id);
+
+    if (!image) {
+      return res.status(404).json({ message: "Memory not found" });
+    }
+
+    // Transform the data if needed (but in this case, it seems unnecessary)
+    const newImage = {
+      id: image._id,
+      userId: image.userId,
+      memory: image.category,
+      files: image.files, // Already an array, no need to modify
+    };
+
+    res.status(200).json(newImage);
+  } catch (error) {
+    console.error("Error getting images:", error);
+    res.status(500).json({ message: "Error occurred", error });
   }
-})
+});
+
 
 module.exports = router;
