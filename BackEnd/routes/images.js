@@ -2,6 +2,14 @@ const express = require("express");
 const router = express.Router();
 let Image = require("../models/Image"); // Assuming the path to your model
 const multer = require("multer");
+const mongoose = require('mongoose');
+const path = require('path');
+
+const app = express();
+
+// Serve static files from the 'uploads' directory
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
 
 // Configure Multer
 const storage = multer.diskStorage({
@@ -68,6 +76,12 @@ router.get("/get/:id", async (req, res) => {
 router.get("/getMemory/:id", async (req, res) => {
   try {
     const id = req.params.id;
+
+    const imageId = req.params.id || req.body.id; // Ensure this is defined
+if (!imageId || !mongoose.Types.ObjectId.isValid(imageId)) {
+    return res.status(400).json({ error: "Invalid or missing image ID" });
+}
+
 
     // Find the document by ID
     const image = await Image.findById(id);

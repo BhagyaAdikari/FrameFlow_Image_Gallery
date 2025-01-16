@@ -4,24 +4,34 @@ import axios from "axios";
 import "./../Css/Memory.css";
 
 const MemoryPage = () => {
-  const { memoryId } = useParams();
+  const { id } = useParams();
   const [memory, setMemory] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  console.log("Params:", useParams());
+  console.log("Params:", id);
+
   useEffect(() => {
+    if (!id) {
+      setError("Memory ID is missing.");
+      setLoading(false);
+      return;
+    }
+
     async function fetchMemory() {
       try {
-        const res = await axios.get(`http://localhost:8070/image/getMemory/${memoryId}`);
-        setMemory(res.data);
+        const res = await axios.get(`http://localhost:8070/image/getMemory/${id}`);
+        setMemory(res.data); // Set memory data from API response
         setLoading(false);
+        console.log("Memory data:", res.data);
       } catch (err) {
         setError("Failed to fetch memory data.");
         setLoading(false);
       }
     }
     fetchMemory();
-  }, [memoryId]);
+  }, [id]);
 
   if (loading) {
     return <p>Loading memory...</p>;
@@ -36,24 +46,25 @@ const MemoryPage = () => {
   }
 
   // Destructure response data
-  const { memory: name, files } = memory;
+  const { memory: memoryName, files } = memory;
 
   return (
     <div className="memory-page">
       <header className="memory-header">
-        <h1>{name}</h1>
-        {/* Placeholder for date, as it wasn't part of the backend response */}
-        <p>{new Date().toLocaleDateString()}</p>
+        <h1>{memoryName}</h1>
+        <img src={`http://localhost:8070/uploads/BackEnd/uploads/1736755031253download (13).jpg`} className="memory-image" />
+        {/* Format the date */}
+        <p>{/* Add a formatted date if available in the response */}</p>
       </header>
 
       <section className="image-gallery">
         {files && files.length > 0 ? (
           files.map((file, index) => (
+            
             <div className="image-container" key={index}>
-              <img
-                src={`http://localhost:8070/uploads/${file}`} // Construct image URL
-                alt={`Image ${index + 1}`}
-              />
+              {/* Display image */}
+              
+              <img src={`http://localhost:8070/uploads/BackEnd/uploads/1736755031253download (13).jpg`} alt={`Memory Image ${index + 1}`} className="memory-image" />
             </div>
           ))
         ) : (
@@ -64,8 +75,4 @@ const MemoryPage = () => {
   );
 };
 
-const App = () => {
-  return <MemoryPage />;
-};
-
-export default App;
+export default MemoryPage;
