@@ -1,34 +1,93 @@
+/* Memory.css */
+
+/* General styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
 .memory-page {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Header styles */
+.memory-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.memory-header h1 {
+  font-size: 2.5rem;
+  margin: 10px 0;
+  color: #444;
+}
+
+.memory-header img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.memory-header p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Image gallery styles */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .memory-header h1 {
+    font-size: 2rem;
   }
-  
-  .memory-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
+
   .image-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+    grid-template-columns: 1fr 1fr;
   }
-  
-  .image-container {
-    text-align: center;
+}
+
+@media (max-width: 480px) {
+  .image-gallery {
+    grid-template-columns: 1fr;
   }
-  
-  .image-container img {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .image-caption {
-    margin-top: 8px;
-    font-size: 0.9em;
-    color: #555;
-  }
-  
+}
+
+.memory-image {
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  margin-top: 20px;
+}

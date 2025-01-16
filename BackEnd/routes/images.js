@@ -7,8 +7,7 @@ const path = require('path');
 
 const app = express();
 
-// Serve static files from the 'uploads' directory
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
 
 
 // Configure Multer
@@ -26,7 +25,7 @@ const upload = multer({ storage: storage });
 // Route to upload files
 router.post("/upload", upload.array("files"), async (req, res) => {
   try {
-    const { userId, category } = req.body;
+    const { userId, category,date } = req.body;
 
     // Extract file paths or names
     const fileNames = req.files.map((file) => file.filename); // Use `file.path` if you need full paths
@@ -34,6 +33,7 @@ router.post("/upload", upload.array("files"), async (req, res) => {
     const newImage = new Image({
       userId,
       category,
+      date,
       fileName: fileNames,
       files: fileNames, // Optional, based on your schema
     });
@@ -60,7 +60,8 @@ router.get("/get/:id", async (req, res) => {
         id: image._id,
         userId: image.userId,
         memory: image.category,
-        files: image.files, // Array of filenames
+        files: image.files, 
+        date:image.date// Array of filenames
       };
     });
 
@@ -95,7 +96,11 @@ if (!imageId || !mongoose.Types.ObjectId.isValid(imageId)) {
       id: image._id,
       userId: image.userId,
       memory: image.category,
-      files: image.files, // Already an array, no need to modify
+      files: image.files,
+      date:image.date 
+      
+      // Already an array, no need to modify
+      
     };
 
     res.status(200).json(newImage);
