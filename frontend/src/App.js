@@ -13,12 +13,13 @@ import Home from './components/Pages/Home';
 import Profile1 from './components/Pages/Profile1';
 import PProfile from './components/Pages/PProfile';
 import Memory from './components/Images/Memory';
+import Header from './components/Header/Header';
 function App() {
   return (
     
     //Routers
   <>
-  <div> </div>
+  <div><Header/> </div>
     <Router>
       <Routes>
       <Route path="/" exact element={<Home/>}/>
