@@ -27,14 +27,21 @@ const Header = () => {
           </nav>
 
           {/* Call-to-Action Button */}
-          <div className="hidden md:block">
-            <a
-              href="#"
-              className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 transition"
-            >
-              Get Started
-            </a>
-          </div>
+          <div className="hidden justify-end pr-16 sm:flex lg:pr-0">
+              <a
+                href="/LoginUser"
+                className="px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-white"
+              >
+                Sign in
+              </a>
+
+              <a
+                href="/SignUp"
+                className="rounded-lg bg-primary px-7 py-3 text-base font-medium text-white hover:bg-opacity-90"
+              >
+                Sign Up
+              </a>
+            </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">

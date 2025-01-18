@@ -188,35 +188,9 @@ const Navbar = () => {
                 <span className="relative my-[6px] block h-[2px] w-[30px] bg-body-color dark:bg-white"></span>
                 <span className="relative my-[6px] block h-[2px] w-[30px] bg-body-color dark:bg-white"></span>
               </button>
-              <nav
-                id="navbarCollapse"
-                className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white px-6 py-5 shadow dark:bg-dark-2 lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:shadow-none lg:dark:bg-transparent ${
-                  !open && "hidden"
-                } `}
-              >
-                <ul className="block lg:flex">
-                  <ListItem NavLink="/#">Home</ListItem>
-                  <ListItem NavLink="/#">Payment</ListItem>
-                  <ListItem NavLink="/#">About</ListItem>
-                  <ListItem NavLink="/#">Blog</ListItem>
-                </ul>
-              </nav>
+              
             </div>
-            <div className="hidden justify-end pr-16 sm:flex lg:pr-0">
-              <a
-                href="/LoginUser"
-                className="px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-white"
-              >
-                Sign in
-              </a>
-
-              <a
-                href="/SignUp"
-                className="rounded-lg bg-primary px-7 py-3 text-base font-medium text-white hover:bg-opacity-90"
-              >
-                Sign Up
-              </a>
-            </div>
+           
           </div>
         </div>
       </div>
