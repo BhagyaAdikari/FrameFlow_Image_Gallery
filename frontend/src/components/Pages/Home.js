@@ -1,20 +1,20 @@
 import React from "react";
 import "./Home.css";
+import imageSrc from "./../img/woman-art-exhibition.jpg";
 
 const HomePage = () => {
     return (
         <div className="home-container">
             <header className="home-header">
-                <nav className="navbar">
-                    <div className="logo">Image<span>Gallery</span></div>
-                    <ul className="nav-links">
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
+               
+                <img
+                               className="w-50 h-30 lg:h-25"
+                               src={imageSrc}
+                               alt="Logo" 
+                             />
+
                 <div className="header-content">
-                    <h1>Discover Stunning Images</h1>
+                    <h1><br></br>Discover Stunning Images</h1>
                     <p>Your one-stop destination for high-quality images.</p>
                     <button 
                         className="cta-button"

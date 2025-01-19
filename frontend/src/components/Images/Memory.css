@@ -1,0 +1,196 @@
+/* General Memory Page Styles */
+.memory-page {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #f9f9f9, #eceff1); /* Subtle background gradient */
+    min-height: 100vh;
+    animation: fadeIn 1s ease-in-out; /* Add a fade-in animation */
+}
+
+/* Header Styles */
+.memory-header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #b89caf; /* Soft pinkish-ash background */
+    color: white;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    border-radius: 0 0 15px 15px;
+    position: relative;
+}
+
+.memory-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.formatted-date {
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: #f0e9f4;
+}
+
+.memory-header .memory-image {
+    max-width: 80%;
+    height: auto;
+    margin-top: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: zoomIn 0.8s ease-in-out;
+}
+
+/* Image Gallery */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 1rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.image-container {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.image-container:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
+}
+
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover::before {
+    opacity: 1;
+}
+
+/* No Images */
+.image-gallery p {
+    font-size: 1rem;
+    color: #777;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Buttons */
+.button {
+    padding: 0.8rem 1.5rem;
+    background-color: #b89caf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin: 1rem 0;
+}
+
+.button:hover {
+    background-color: #a18099;
+    transform: scale(1.05);
+}
+
+/* Loading State */
+.loading {
+    font-size: 1.2rem;
+    color: #777;
+    text-align: center;
+    animation: pulse 1.5s infinite;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .memory-header h1 {
+        font-size: 2rem;
+    }
+
+    .image-container {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .memory-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .formatted-date {
+        font-size: 0.9rem;
+    }
+
+    .image-container {
+        width: 120px;
+        height: 120px;
+    }
+}

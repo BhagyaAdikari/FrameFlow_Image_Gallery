@@ -1,0 +1,92 @@
+/* Container styles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #eceff1, #f7e9ec); /* Soft ash-pink gradient */
+    font-family: 'Poppins', sans-serif;
+    padding: 1rem;
+  }
+  
+  /* Form styles */
+  .login-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  /* Heading styles */
+  .login-form h2 {
+    margin-bottom: 1.5rem;
+    color: #444;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  /* Form group */
+  .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #b89caf; /* Pinkish-ash border */
+    box-shadow: 0 0 5px rgba(184, 156, 175, 0.5);
+  }
+  
+  /* Button styles */
+  .login-button {
+    background: #b89caf; /* Pinkish-ash button */
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+  }
+  
+  .login-button:hover {
+    background: #a5899a; /* Slightly darker pinkish-ash */
+    transform: scale(1.05);
+  }
+  
+  .login-button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .login-form {
+      padding: 1.5rem;
+    }
+  
+    .login-form h2 {
+      font-size: 1.5rem;
+    }
+  }
+  

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "./../Css/Memory.css";
+import "./Memory.css";
 
 const MemoryPage = () => {
   const { id } = useParams();

@@ -7,8 +7,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-    color: #333;
+    background: linear-gradient(135deg, #ffdafd, #f2e5ee); /* Ash with a pinkish hue */
+    color: #f9ddfe; /* Slightly muted gray for text */
     overflow-x: hidden;
 }
 
@@ -25,17 +25,15 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(120, 120, 130, 0.8); /* Ash tone */
     color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .logo {
     font-size: 1.5rem;
     font-weight: bold;
-}
-
-.navbar .logo span {
-    color: #ff6f61;
+    color: #d7a4b7; /* Muted pink accent */
 }
 
 .nav-links {
@@ -52,7 +50,7 @@ body {
 }
 
 .nav-links li a:hover {
-    color: #ff6f61;
+    color: #d7a4b7; /* Pinkish ash hover effect */
 }
 
 /* Header Content */
@@ -63,7 +61,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: url('https://source.unsplash.com/1600x900/?nature,photography') no-repeat center center/cover;
+    background: url('https://source.unsplash.com/1600x900/?nature') no-repeat center center/cover; /* Original image */
     color: white;
     padding: 4rem 2rem;
     position: relative;
@@ -76,7 +74,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3); /* Transparent overlay to enhance contrast */
     z-index: 0;
 }
 
@@ -88,18 +86,20 @@ body {
 .header-content h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: #f5e0e5; /* Muted pinkish text */
 }
 
 .header-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    color: #f9d7ee; /* Pinkish-ash for description text */
 }
 
 .cta-button {
     padding: 0.8rem 2rem;
     font-size: 1rem;
     color: white;
-    background-color: #ff6f61;
+    background-color: #ff8bda; /* Muted pinkish-ash button */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -107,15 +107,16 @@ body {
 }
 
 .cta-button:hover {
-    background-color: #e55b50;
+    background-color: #ae2a79; /* Slightly darker shade on hover */
     transform: scale(1.05);
 }
 
 /* Footer */
 .home-footer {
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
+    background: rgba(100, 100, 110, 0.8); /* Ashy footer */
+    color: #e0d4d8; /* Subtle pinkish-ash text */
     text-align: center;
     padding: 1rem 0;
     font-size: 0.9rem;
+    border-top: 2px solid #b89caf; /* Pinkish-ash accent border */
 }

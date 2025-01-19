@@ -15,7 +15,7 @@ const AboutUs = () => {
         <section className="bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">About Us</h2>
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Welcome to <span className="font-semibold">FrameFlow</span>, your go-to platform for discovering and sharing stunning images. 
+            Welcome to <span className="font-semibold">FrameFlow</span>, fgd your go-to platform for discovering and sharing stunning images. 
             Our mission is to celebrate creativity by curating a collection of breathtaking visuals from artists and photographers worldwide.
           </p>
           <p className="text-lg text-gray-700 leading-relaxed mb-6">

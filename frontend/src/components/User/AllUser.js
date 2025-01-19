@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import './AllUser.css';
 
 function AllUser() {
     //usage of useEffect
@@ -32,12 +33,10 @@ function AllUser() {
   return (
   
     <div>
-      <h1>
-        All Users
-      </h1>
+      
 
-      <div className="container">
 
+      <div className="container"><h1><b><br></br><center>Frame Flow Users</center></b></h1><br></br>
 <table class="table">
 <thead class="thead-dark">
   <tr>
@@ -47,6 +46,7 @@ function AllUser() {
     <th scope="col">Gender</th>
     <th scope="col">Password</th>
     <th scope="col">Actions</th>
+    <th scope="col"></th>
   </tr>
 </thead>
 <tbody>

@@ -1,0 +1,51 @@
+/* AllUser.css */
+.container {
+    margin-top: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .table {
+    margin-top: 30px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #f8f9fa;
+  }
+  
+  .table td {
+    background-color: #fff;
+  }
+  
+  .table .btn {
+    margin: 5px;
+  }
+  
+  .table .btn-danger {
+    background-color: #dc3545;
+  }
+  
+  .table .btn-success {
+    background-color: #28a745;
+  }
+  
+  .table .btn:hover {
+    opacity: 0.8;
+  }
+  
+  h1 b {
+    font-size: 30px;
+  }
+  

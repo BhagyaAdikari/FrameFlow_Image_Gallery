@@ -14,7 +14,7 @@ const Header = () => {
         {/* lg+ */}
         <nav className="flex items-center justify-between h-16 lg:h-20">
           <div className="flex-shrink-0">
-            <a href="#" title="" className="flex">
+            <a href="/" title="" className="flex">
               <img
                 className="w-auto h-8 lg:h-20"
                 src={imageSrc}
@@ -63,11 +63,19 @@ const Header = () => {
 
           <div className="hidden lg:flex lg:items-center lg:ml-auto lg:space-x-10">
             <a
-              href="#"
+              href="/About"
               title=""
               className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
             >
-              Features
+              About Us
+            </a>
+
+            <a
+              href="/Contact"
+              title=""
+              className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+            >
+              Contact Us
             </a>
 
             <a
@@ -75,7 +83,7 @@ const Header = () => {
               title=""
               className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
             >
-              Solutions
+              Gallery
             </a>
 
             <a
@@ -83,15 +91,7 @@ const Header = () => {
               title=""
               className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
             >
-              Resources
-            </a>
-
-            <a
-              href="#"
-              title=""
-              className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
-            >
-              Pricing
+              Profile
             </a>
           </div>
 

@@ -14,8 +14,9 @@ import Profile1 from './components/Pages/Profile1';
 import PProfile from './components/Pages/PProfile';
 import Memory from './components/Images/Memory';
 import Header from './components/Header/Header';
-import AboutUs from './components/About/About';
+import About from './components/About/About';
 import Sample from './components/Sample/Sample';
+import ContactUs from './components/Contact/Contact';
 function App() {
   return (
     
@@ -37,8 +38,9 @@ function App() {
         <Route path="/Profile1/:id" exact element={<Profile1/>}></Route>
         <Route path="/PProfile/:id" exact element={<PProfile/>}></Route>
         <Route path="/Memory/:id" exact element={<Memory/>}></Route>
-        <Route path="/About" exact element={<AboutUs/>}></Route>
+        <Route path="/About" exact element={<About/>}></Route>
         <Route path="/Sample" exact element={<Sample/>}></Route>
+        <Route path="/Contact" exact element={<ContactUs/>}></Route>
       </Routes>      
     </Router>
     
