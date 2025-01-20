@@ -1,5 +1,5 @@
 /* Container styles */
-.login-container {
+.signup-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@
   }
   
   /* Form styles */
-  .login-form {
+  .signup-form {
     background: white;
     padding: 2rem;
     border-radius: 10px;
@@ -21,7 +21,7 @@
   }
   
   /* Heading styles */
-  .login-form h2 {
+  .signup-form h2 {
     margin-bottom: 1.5rem;
     color: #444;
     font-size: 1.8rem;
@@ -42,7 +42,8 @@
     font-weight: 500;
   }
   
-  .form-group input {
+  .form-group input,
+  .form-group select {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid #ddd;
@@ -51,14 +52,15 @@
     transition: border-color 0.3s ease-in-out;
   }
   
-  .form-group input:focus {
+  .form-group input:focus,
+  .form-group select:focus {
     outline: none;
     border-color: #b89caf; /* Pinkish-ash border */
     box-shadow: 0 0 5px rgba(184, 156, 175, 0.5);
   }
   
   /* Button styles */
-  .login-button {
+  .signup-button {
     background: #b89caf; /* Pinkish-ash button */
     color: white;
     border: none;
@@ -70,49 +72,23 @@
     width: 100%;
   }
   
-  .login-button:hover {
+  .signup-button:hover {
     background: #a5899a; /* Slightly darker pinkish-ash */
     transform: scale(1.05);
   }
   
-  .login-button:active {
+  .signup-button:active {
     transform: scale(0.98);
   }
   
   /* Responsive Design */
   @media (max-width: 768px) {
-    .login-form {
+    .signup-form {
       padding: 1.5rem;
     }
   
-    .login-form h2 {
+    .signup-form h2 {
       font-size: 1.5rem;
     }
   }
-
-  /* Sign-up link styles */
-.signup-link {
-  margin-top: 1rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #666; /* Light grayish text */
-}
-
-.signup-link p {
-  margin: 0;
-  font-weight: 500; /* Slightly bold for better readability */
-}
-
-.signup-link a {
-  color: #b89caf; /* Pinkish-ash to match the button */
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.signup-link a:hover {
-  color: #a5899a; /* Slightly darker pinkish-ash on hover */
-  text-decoration: underline;
-}
-
   

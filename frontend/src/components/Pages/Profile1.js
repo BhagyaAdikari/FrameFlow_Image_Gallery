@@ -43,6 +43,7 @@ function Profile1() {
     <Link to={`/ImageUpload/${id}`}><button type="button" className="btn btn-secondary">Create Memory</button></Link>
     </div>
 </div></div>
+
   )
 }
 

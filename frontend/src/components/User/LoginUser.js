@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./LoginUser.css";
 import axios from "axios";
 
 function LoginForm() {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,27 +13,25 @@ function LoginForm() {
       alert("Please enter both username and password");
       return;
     }
-    // Example API call
-    console.log("Username:",username, "Password:",password);
-    
+    console.log("Username:", username, "Password:", password);
     sendData(e);
   };
 
   function sendData(e) {
     e.preventDefault();
 
-    axios.post('http://localhost:8070/user/login', { username, password })
-
-    .then((result) => {
-      if(result.data.message==="Success"){
-        alert("Login Success");
-        window.location.href = `/Profile1/${result.data.userId}`;
-      }
-      else{
-        alert(result.data.message);
-  }})
-  .catch(err => console.log(err));
-  };
+    axios
+      .post("http://localhost:8070/user/login", { username, password })
+      .then((result) => {
+        if (result.data.message === "Success") {
+          alert("Login Success");
+          window.location.href = `/Profile1/${result.data.userId}`;
+        } else {
+          alert(result.data.message);
+        }
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <div className="login-container">
@@ -61,6 +60,10 @@ function LoginForm() {
         <button type="submit" className="login-button">
           Login
         </button>
+        <div className="signup-link">
+          <p>Don't have an account?</p>
+          <Link to="/signup">Sign up here</Link>
+        </div>
       </form>
     </div>
   );
