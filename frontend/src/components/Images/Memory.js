@@ -60,7 +60,7 @@ const MemoryPage = () => {
         <h1>{memoryName}</h1>
         
         <p className="formatted-date">{formattedDate}</p>
-        <img src={`./components/Images/1737022608373freepik__background__33500.png`} className="memory-image" />
+       
         {/* Format the date */}
         <p>{/* Add a formatted date if available in the response */}</p>
       </header>

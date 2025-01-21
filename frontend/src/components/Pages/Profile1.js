@@ -24,24 +24,46 @@ function Profile1() {
   return (
     <div><div className="profile-container">
     <h1>User Profile</h1>
-    <p><span className="label">ID:</span> {id}</p>
-    <p><span className="label">Name:</span> {user.name}</p>
-    <p><span className="label">Age:</span> {user.age}</p>
-    <p><span className="label">Gender:</span> {user.gender}</p>
-    <p><span className="label">Password:</span> {user.password}</p>
     
-    <div className='container p-3 my-3 bg-dark text-white'>
-    <Link to={`/updateUser/${id}`}><button type="button" className="btn btn-primary">Update User</button></Link><br></br>
-    </div>
-    <div className='container p-3 my-3 bg-dark text-white'>
-    <Link to={`/deleteUser/${id}`}><button type="button" className="btn btn-danger">Delete User</button></Link><br></br>
-    </div>
-    <div className='container p-3 my-3 bg-dark text-white'>
-    <Link to={`/PProfile/${id}`}><button type="button" className="btn btn-secondary">View my Memories</button></Link>
-    </div>
-    <div className='container p-3 my-3 bg-dark text-white'>
-    <Link to={`/ImageUpload/${id}`}><button type="button" className="btn btn-secondary">Create Memory</button></Link>
-    </div>
+    <p>
+          <span className="label">Name:</span> 
+          <span className="value name">{user.name}</span>
+        </p>
+        <p>
+          <span className="label">Age:</span> 
+          <span className="value age">{user.age}</span>
+        </p>
+        <p>
+          <span className="label">Gender:</span> 
+          <span className="value gender">{user.gender}</span>
+        </p>
+        <p>
+          <span className="label">Password:</span> 
+          <span className="value password">{user.password}</span>
+        </p>
+    
+    <div className="button-container">
+        <Link to={`/updateUser/${id}`}>
+          <button type="button" className="btn custom-btn btn-primary">
+            Update User
+          </button>
+        </Link>
+        <Link to={`/deleteUser/${id}`}>
+          <button type="button" className="btn custom-btn btn-danger">
+            Delete User
+          </button>
+        </Link>
+        <Link to={`/PProfile/${id}`}>
+          <button type="button" className="btn custom-btn btn-secondary">
+            View my Memories
+          </button>
+        </Link>
+        <Link to={`/ImageUpload/${id}`}>
+          <button type="button" className="btn custom-btn btn-secondary">
+            Create Memory
+          </button>
+        </Link>
+      </div>
 </div></div>
 
   )
